@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path=require("path");
 const cors = require("cors");
 require("dotenv").config({ path: "./config.env" });
 const port = process.env.PORT || 3000;
@@ -8,8 +9,11 @@ app.use(cors());
 app.use(express.json());
 app.use(require("./routes/book")); 
 require('./models/Book');
+require('./models/User')
 var books = require('./routes/book.js');
+var users = require('./routes/user.js')
 app.use('/books',books);
+app.use('/users',users);
 app.listen(process.env.PORT,()=>{
   console.log(`Server started at port: ${process.env.PORT} `);
 });

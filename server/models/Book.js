@@ -3,11 +3,15 @@ var Schema = mongoose.Schema;
 var BookSchema = new Schema(
     {
         title:{type:String},
-        publishDate:{type:Date},
+        yearPublished:{type:Number},
         authors:[{type:String}],
         category:{type:String},
         description:{type:String},
-        numberOfPages:{type:Number}
+        picturePath:{type:String},
+        numberOfPages:{type:Number},
+        isLoaned:{type:Boolean,default:false},
+        dateLoaned:{type:Date},
+        loanedUser:{type: Schema.Types.ObjectId, ref: 'User', default:null}
     }
 );
 module.exports=mongoose.model("book", BookSchema);
