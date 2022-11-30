@@ -60,5 +60,7 @@ router.get('/getFreeBooks',bookController.getFreeBooks);
 router.get('/getBooks',bookController.getBooks);
 router.post('/loanBook',bookController.loanBook);
 router.post('/returnBook',bookController.returnBook);
+router.post('/deleteBook',bookController.deleteBook);
+router.post('/searchBooks',bookController.searchBooks);
 
 module.exports = router;

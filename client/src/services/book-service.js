@@ -92,12 +92,49 @@ const return_book  = (title) => {
 
 }
 
+const delete_book  = (title) => {
+  return axios
+    .post(API_URL + "/deleteBook", {
+      title
+    })
+    .then((response) => {
+      return response.data;
+    }
+    )
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });;
+
+}
+
+const search_books  = (title,authors, category ) => {
+  return axios
+    .post(API_URL + "/searchBooks", {
+      title,
+      authors,
+      category
+    })
+    .then((response) => {
+      console.log(response.data);
+      return response.data;
+    }
+    )
+    .catch(function (response) {
+      //handle error
+      console.log(response);
+    });;
+
+}
+
 const bookService = {
   get_free_books,
   get_books,
   book_upload,
   loan_book,
-  return_book
+  return_book,
+  delete_book,
+  search_books
  };
 
 export default bookService;

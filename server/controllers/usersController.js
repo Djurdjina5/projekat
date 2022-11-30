@@ -64,3 +64,35 @@ module.exports.logout=function(req,res)
     res.json({msg:"User logged out"});
         
 }
+
+module.exports.changepassword = function(req,res)
+{
+    console.log(req.body)
+    User.findOneAndUpdate({username:req.body.username, password:req.body.oldPassword},
+        {$set:{password:req.body.newPassword}}).then(
+        user=>{
+            if(user) {
+                user.password = req.body.newPassword;
+                res.status(200).json(user);
+            } else {
+                res.status(404).json("Wrong password");
+            }
+        }
+    );
+
+}
+
+
+module.exports.deleteAcc=function(req,res)
+{   
+    const username = req.body.username;
+    User.remove({username:username},(err,doc)=>{
+        if(err){
+            res.status(401);
+        } else {
+            res.status(200);
+        }
+    })
+    res.json({msg:"User removed from app"});
+        
+}

@@ -61,3 +61,41 @@ module.exports.returnBook = function(req,res) {
 
   })
 }
+
+
+module.exports.deleteBook = function(req,res) {
+  console.log("I am in delete book")
+  console.log(req.body.title);
+
+  Book.findOneAndRemove({title: req.body.title}, function(err,doc){
+    if(err){
+    return res.status(401).json({error:'Error book unsuccesfully deleted'});
+    } else {
+      return res.status(200).json({message:'Book sucessfully deleted'});
+    }
+  });
+}
+
+module.exports.searchBooks=function(req,res){
+  console.log(req.body);
+  authors = req.body.authors ? req.body.authors : "."
+  title   = req.body.title ? req.body.title : "."
+  category = req.body.category ? req.body.category : "."
+  console.log(authors);
+  console.log(title);
+  console.log(category);
+  Book.find({$and:[
+       {authors:{'$regex':  authors }},
+       {title:{'$regex':  title }},
+       {category:{'$regex':  category } }
+
+  ]}).then(
+
+     books=>{
+       if(books) {res.status(200).json(books);}
+       else {res.status(401).json("There are no books with that parameters!");}
+     }
+ 
+   )
+ 
+}
