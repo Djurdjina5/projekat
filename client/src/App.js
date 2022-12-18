@@ -12,7 +12,6 @@ import AddNewBook from "./components/AddNewBook"
 import SearchBook from "./components/BookSearch"
 import RegisterUser from "./components/RegisterUser"
 
-
 function App() {
   return (
     <BrowserRouter>

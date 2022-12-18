@@ -45,6 +45,10 @@ const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+const getCurrentUserType = () => {
+  return JSON.parse(localStorage.getItem('user')).type;
+}
+
 const changePassword = (username, oldPassword, newPassword) => {
   return axios.post(API_URL + "/changePassword", {
     username,
@@ -91,7 +95,10 @@ const authService = {
   signup,
   login,
   logout,
-  getCurrentUser
+  getCurrentUser,
+  changePassword,
+  deleteAcc,
+  getCurrentUserType
 };
 
 export default authService;
