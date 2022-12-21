@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { Form, renderMatches } from "react-router-dom";
 import bookService from "../services/book-service";
+import authService from "../services/auth-service";
 import SearchBook from "./BookSearch";
+import Header from "./Header"
 
 const Citalac  = ()=> {
   const [books, setBooks] = useState([]);
@@ -17,31 +18,43 @@ const Citalac  = ()=> {
   const LoanBook = (title) => {
     bookService.loan_book(title);
     window.location.reload();
-    // check is there any error
-
   }
+
+  const userType = authService.getCurrentUserType();
+
+
   return (
-    <><div>
+    <>
+    {userType == "citalac" ?  (
+      <div>
+      <Header />
       {books.map((book, index) => {
         return (
-          <div key={index}>
-            <h1> Title: {book.title} </h1>
-            <p> Number of pages: {book.numberOfPages}</p>
-            <p> Authors: {book.authors}</p>
-            <p> Description: {book.description}</p>
-            <img src={book.picturePath} />
-            <button onClick={() => LoanBook(book.title)}>
-              Click me
+          <div className="row row-cols-1 row-cols-md-2 g-4" key={index}> 
+          <div className="card" >
+          <div className="col">
+            <img src={book.picturePath} style={{width:300,height:300}} className="card-img-top"/>
+            <div className= "card-body">
+              <h5 className="card-title"> {book.title}</h5>
+              <p className="card-text"> {book.description}</p>   
+            </div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item"> {book.authors}</li>
+              <li className="list-group-item">{book.numberOfPages}</li>
+            </ul>
+            <button className="btn btn-primary bnt-sm" onClick={() => LoanBook(book.title) }>
+              Задужите књигу
             </button>
             <hr />
+            </div>
           </div>
+        </div>
         );
       })}
-
-      <hr />
-      <hr />
-      <hr />
-    </div></>
+    </div>
+    )  : (<p></p>)}
+    
+    <SearchBook /></>
   )
   
 }

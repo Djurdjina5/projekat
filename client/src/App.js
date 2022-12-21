@@ -8,6 +8,7 @@ import Citalac from "./components/Citalac"
 import Bibliotekar from "./components/Bibliotekar"
 import ChangePassword from "./components/ChangePassword"
 import DeleteAccount from "./components/DeleteAccount"
+import Homepage  from "./components/Homepage"
 import AddNewBook from "./components/AddNewBook"
 import SearchBook from "./components/BookSearch"
 import RegisterUser from "./components/RegisterUser"
@@ -16,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Homepage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<RegisterUser />} />
         <Route path="/admin" element={<Admin />} />
