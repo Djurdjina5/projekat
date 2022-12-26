@@ -1,6 +1,7 @@
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./App.css"
+import React, { Component }  from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Login from "./components/Login"
 import Admin from "./components/Admin"

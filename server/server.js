@@ -14,6 +14,8 @@ var books = require('./routes/book.js');
 var users = require('./routes/user.js')
 app.use('/books',books);
 app.use('/users',users);
+app.use('/routes/uploads',express.static(path.join(__dirname,'routes/uploads')));
+app.use('/uploads,',express.static('uploads'));
 app.listen(process.env.PORT,()=>{
-  console.log(`Server started at port: ${process.env.PORT} `);
+  console.log("Server started at port: ${process.env.PORT}" );
 });
