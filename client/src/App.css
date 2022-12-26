@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  background-color: black;
 }
 
 .App-logo {
@@ -14,7 +15,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color:#433A3F;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,7 +39,7 @@
 }
 
 App {
-  background-color: white;
+  background-color: #433A3F;
 }
 
 .Auth-form-container {
@@ -46,21 +47,30 @@ App {
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: 100vh;
+  height: auto;
 }
 
 .Auth-form {
   width: 420px;
   box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
-  padding-top: 30px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 0px;
   border-radius: 8px;
-  background-color: white;
+  background-color: #8C6057;
+  margin-top: 30px;
+  height: auto;
+  /* border-width: 10px;
+  border-color: #FFA737; */
+  border-right: 3px solid #FFA737;
+    border-left: 3px solid #FFA737;
+      border-top: 3px solid #FFA737;
+        border-bottom: 3px solid #FFA737;
 }
 
 .Auth-form-content {
   padding-left: 12%;
   padding-right: 12%;
+  height: auto;
 }
 
 .Auth-form-title {
@@ -70,9 +80,135 @@ App {
   color: rgb(34, 34, 34);
   font-weight: 800;
 }
+.footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+  justify-content: center;
+}
 
 label {
   font-size: 14px;
   font-weight: 600;
   color: rgb(34, 34, 34);
+}
+body {
+    color: white;
+    padding: 40px;
+    font-family: Arial;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /* overflow-y: hidden;
+      overflow-x: hidden; */
+    margin: 0;
+      padding: 0;
+      background-image: url(./img/backroundmain.jpg);
+        background-size: cover;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        font-family: sans-serif;
+  }
+button {
+    color:brown
+}
+/* .Homepage{
+background-image: url(./img/backroundmain.jpg);
+background-size: cover;
+background-repeat: no-repeat;
+} */
+.lead-txt{
+  font-style: italic;
+    -webkit-text-fill-color: #CA7DF9;
+
+}
+.naslov{
+  -webkit-text-fill-color:#FFA737;
+  margin-top: 35px;
+}
+.forgot-password{
+  -webkit-text-fill-color: #FFFFFF;
+  font-size: 14px;
+}
+.navbar{
+  background-color: #8C6057;
+  display: flex;
+    flex-direction: row;
+}
+.card2{
+ border-style: solid;
+ border-width: 3px;
+ border-color: #CA7DF9;
+ background-color: #FFA737;
+ border-radius: 10px;
+ box-sizing: border-box;
+ max-width: 220px;
+ /* flex-flow: column; */
+ margin:10px;
+ text-align: center;
+ /* flex-basis: 280px; */
+}
+.card2-img-top {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 200px;
+  height: 250px;
+  background-color: white;
+  margin-top: 5px;
+  margin-right: 3px;
+}
+.card2-body {
+  margin: 10px;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column; */
+}
+.cards2{
+  display: flex;
+    /* margin: 20px; */
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* width: 100%;
+    height: 100%; */
+    /* margin-bottom: 0%; */
+}
+.list-group{
+background-color: #FFA737;
+}
+.list-group-flush{
+  background-color: #FFA737;
+}
+.list-group-item {
+  background-color: #8C6057;
+}
+.naslov2{
+      -webkit-text-fill-color: #CA7DF9;
+}
+.delete{
+flex-direction: row;
+}
+.card{
+  background-color: #8C6057;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  border-style: solid;
+    border-width: 3px;
+    border-color: #CA7DF9;
+}
+.card-body{
+text-align: center;
+justify-content: center;
+}
+.img-fluid{
+  width:500px;
+  height: 500px;
+}
+/* .form-control{
+    background-color: #8C6057;
+} */
+.form-control::placeholder{
+  color:#3C4048;
 }

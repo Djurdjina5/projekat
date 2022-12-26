@@ -9,7 +9,7 @@ const NavBar = () => {
   console.log(userType)
 
   return (
-    <Navbar bg="dark" variant="dark">
+    <Navbar classNam="navbar">
         <Container>
           <Navbar.Brand href="/"> Почетна</Navbar.Brand>
           <Nav className="me-auto">

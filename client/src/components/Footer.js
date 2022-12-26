@@ -4,7 +4,9 @@ import NavBar from "./NavBar";
 
 const Footer = () => {
   return (
-    <p> Направљен 2022. </p>
+    <div className="footer">
+    <p> Copyright Biblioteka 2022. </p>
+    </div>
   );
 };
 

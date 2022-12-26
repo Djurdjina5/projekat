@@ -33,84 +33,94 @@ const AddNewBook = () => {
         }
       );
     } catch (err) {
-      setError('Апликација не моће да креира књигу')
+      setError('Апликација не може да креира књигу')
       console.log(err);
     }
   };
   
 return (
-    <><><form onSubmit={uploadBook}>
+    <div className="container">
+      <h2 className="naslov2"> Додај нову књигу</h2>
+      <div>
+    <form onSubmit={uploadBook}>
     <input
-      placeholder='Назив књиге'
+      placeholder='Унесите назив књиге'
       type="text"
       id="title"
       value={title}
       onChange={(e) => setTitle(e.target.value)}
-      className="form-control" />
+      className="form-control" 
+       style={{backgroundColor:"#8C6057"}}/>
     <input
       label='Аутори'
-      placeholder="Аутори"
+      placeholder="Унесите аутора"
       type="text"
       id="authors"
       value={authors}
       onChange={(e) => setAuthors(e.target.value)}
-      className="form-control" />
+      className="form-control" 
+       style={{backgroundColor:"#8C6057"}}/>
     <input
       label='Category'
       type="text"
-      placeholder="Категорија"
+      placeholder="Унесите категорију"
       id="category"
       value={category}
       onChange={(e) => setCategory(e.target.value)}
-      className="form-control" />
+      className="form-control" 
+       style={{backgroundColor:"#8C6057"}}/>
     <input
       label='Description'
       type="text"
-      placeholder="Кратак опис"
+      placeholder="Унесите кратак опис"
       id="description"
       value={description}
       onChange={(e) => setDescription(e.target.value)}
-      className="form-control" />
+      className="form-control"
+       style={{backgroundColor:"#8C6057"}}/>
     <input
       label='Number of pages'
       type="number"
-      placeholder="Број страна"
+      placeholder="Унесите број страна"
       id="pagenumber"
       value={numberOfPages}
       onChange={(e) => setnumberOfPages(e.target.value)}
-      className="form-control" />
+      className="form-control" 
+      style={{backgroundColor:"#8C6057"}}/>
     <input
       label='Year'
       type="number"
-      placeholder="Година издања"
+      placeholder="Унесите годину издања"
       id="yearnumber"
       value={publishedYear}
       onChange={(e) => setpublisedYear(e.target.value)}
-      className="form-control" />
-    <input
-      placeholder="Избаерите слику књиге"
+      className="form-control"
+       style={{backgroundColor:"#8C6057"}} />
+    <input 
+      placeholder="Изаберите слику књиге"
       type="file"
       name="selectedImage"
-      onChange={(event) => {
-        setSelectedImage(event.target.files[0]);
-      } } />
-
-    <button type="submit" className="btn btn-primary" style={{ color: 'black', backgroundColor: 'brown' }}>
+      onChange={(event) => {setSelectedImage(event.target.files[0]);}}
+      />
+    <button type="submit" className="btn btn-warning" >
       Додајте књигу
     </button>
+    </form>
 
-  </form><div>
+    <div>
       {error &&
         <div className="alert alert-danger">
           <strong>Грешка!{error} </strong>
         </div>}
-    </div></><div>
+    </div>
+  </div>
+    <div>
       {message &&
         <div className="alert alert-sucess">
           <strong>Успешно!{message} </strong>
         </div>}
-    </div></>
-      );
-   }
+    </div>
+  </div>
+  );}
 
 export default AddNewBook;

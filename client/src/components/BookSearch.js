@@ -42,15 +42,14 @@ const SearchBook  = ()=> {
 
   return (
     <><div>
-          <h6 className="text-center mb-4" style={{color:'black'}}>Претрага књига </h6>
+          <h6 className="naslov2 text-center mb-3 mt-3" style={{fontSize:"30px"}} >Претрага књига </h6>
           <section className="search-sec">
               <div className="container">
                   <form onSubmit={searchBooks}>
                       <div className="row">
                           <div className="col-lg-12">
                               <div className="row">
-
-                                  <div className="col-lg-3 col-md-3 col-sm-12 p-0">
+                                  <div className="col-lg-3 col-md-3 col-sm-12 ">
                                       <input
                                           type="text"
                                           label="author"
@@ -59,10 +58,8 @@ const SearchBook  = ()=> {
                                           placeholder="Унесите аутора"
                                           value={authors}
                                           onChange={(e) => setAuthors(e.target.value)} />
-
                                   </div>
-
-                                  <div className="col-lg-3 col-md-3 col-sm-12 p-0">
+                                  <div className="col-lg-3 col-md-3 col-sm-12">
                                       <input
                                           type="text"
                                           label="title"
@@ -72,8 +69,7 @@ const SearchBook  = ()=> {
                                           value={title}
                                           onChange={(e) => setTitle(e.target.value)} />
                                   </div>
-
-                                  <div className="col-lg-3 col-md-3 col-sm-12 p-0">
+                                  <div className="col-lg-3 col-md-3 col-sm-12">
                                       <input
                                           type="text"
                                           label="category"
@@ -83,10 +79,9 @@ const SearchBook  = ()=> {
                                           value={category}
                                           onChange={(e) => setCategory(e.target.value)} />
                                   </div>
-
-                                  <div className="col-lg-3 col-md-3 col-sm-12 p-0">
+                                  <div className="col-lg-3 col-md-3 col-sm-12">
                                       <button type="submit"
-                                          className="btn btn-danger wrn-btn"> Претражите књиге
+                                          className="btn btn-warning wrn-btn"> Претражите књиге
                                         </button>
                                   </div>
                               </div>
@@ -100,19 +95,21 @@ const SearchBook  = ()=> {
             <p>{error}</p>
           </div> 
       <div>
+    <div className="cards2">
     {books_s.map((book, index) => {
       return (
-        <div className="row row-cols-1 row-cols-md-2 g-4" key={index}> 
-          <div className="card" >
+        <div className="cards2" key={index}> 
+          <div className="card2" >
           <div className="col">
-            <img src={book.picturePath} style={{width:300,height:300}} className="card-img-top"/>
-            <div className= "card-body">
-              <h5 className="card-title" style={{color:"black"}}> {book.title}</h5>
-              <p className="card-text" style={{color:"black"}}> {book.description}</p>   
+            <img src={book.picturePath}  className="card2-img-top"/>
+            <div className= "card2-body">
+              <h5 className="card2-title" style={{color:"black"}}> {book.title}</h5>
+              <p className="card2-text" style={{color:"black"}}> {book.authors}</p>  
+               <p className="card2-text" > {book.numberOfPages}<p style={{fontSize:"11px"}}>стр.</p></p> 
             </div>
             <ul className="list-group list-group-flush">
-              <li className="list-group-item"> {book.authors}</li>
-              <li className="list-group-item">{book.numberOfPages}</li>
+              <li className="list-group-item"> {book.description}</li>
+              <li className="list-group-item">{book.yearPublished}</li>
             </ul>
             </div>
           </div>
@@ -120,8 +117,7 @@ const SearchBook  = ()=> {
                      
       );
     })}
-
-
+</div>
   </div>
       </>
   )

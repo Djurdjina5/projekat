@@ -37,40 +37,40 @@ const Login = () => {
   };
 
   return (
-    <div className="Auth-form-container">
+    <div className="Auth-form-container justify-content-left align-items-center ">
       <form onSubmit={handleLogin} className="Auth-form">
         <div className="Auth-form-content">
-         <h3 className="Auth-form-title">Log in</h3>
+         <h3 className="Auth-form-title">Пријавите се на систем</h3>
           <div className="form-group mt-3">
-            <label>Username</label>
+            <label>Корисничко име</label>
             <input
               type="text"
               className="form-control mt-1"
-              placeholder="Enter Username"
+              placeholder="Унесите корисничко име"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="form-group mt-3">
-            <label>Password</label>
+            <label>Шифра</label>
             <input
               type="password"
               className="form-control mt-1"
-              placeholder="Enter password"
+              placeholder="Унесите шифру"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
-              Submit
+            <button type="submit" className="btn btn-dark">
+              Пријави се
             </button>
           </div>
           <div className="w3-container w3-red">
             <p>{error}</p>
           </div> 
     <p className="forgot-password text-right mt-2">
-      Forgot <a href="#">password?</a>
+       <a href="#">Заборављена лозинка?</a>
     </p>
     </div>
     </form>

@@ -79,7 +79,7 @@ return (
       <MDBRow>
         <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
 
-          <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Регистрација новог корисника</p>
+          <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 naslov2">Регистрација новог корисника</p>
 
           <div className="d-flex flex-row align-items-center mb-4 ">
             <MDBIcon fas icon="user me-3" size='lg'/>
@@ -142,12 +142,12 @@ return (
           </div>
           <p>{error}</p>
 
-          <MDBBtn className='mb-4' size='lg' type="submit"> Региструј</MDBBtn>
+          <MDBBtn className='mb-4 btn-dark' size='lg' type="submit"> Региструј</MDBBtn>
 
         </MDBCol>
 
         <MDBCol md='10' lg='6' className='order-1 order-lg-2 d-flex align-items-center'>
-          <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp' fluid/>
+          <MDBCardImage src='https://png.pngtree.com/png-clipart/20201225/ourlarge/pngtree-commercially-available-cartoon-characters-reading-books-on-world-book-day-png-image_2620642.jpg' fluid/>
         </MDBCol>
 
       </MDBRow>
