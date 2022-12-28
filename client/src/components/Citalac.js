@@ -8,14 +8,19 @@ import NavBar from "./NavBar";
 
 const Citalac = () => {
   const [books, setBooks] = useState([]);
-  const [loanbook, setLoanBook] = useState("");
+  const [loanedBooks, setLoanedBooks] = useState([]);
   useEffect(() => {
     if (books.length == 0) {
       bookService.get_free_books().then(function(result) {
         setBooks(result);
       });
     }
-  }, [books.prop]);
+    if (loanedBooks.length == 0) {
+      bookService.get_loaned_books_byuserid().then(function(result) {
+        setLoanedBooks(result);
+      });
+    }
+  }, [books.prop, loanedBooks.prop]);
 
   const LoanBook = (title) => {
     bookService.loan_book(title);
@@ -23,6 +28,7 @@ const Citalac = () => {
   };
 
   const userType = authService.getCurrentUserType();
+  const userID = authService.getCurrentUserID();
 
   return (
     <>
@@ -68,8 +74,37 @@ const Citalac = () => {
       ) : (
         <p></p>
       )}
-
-      {/* <SearchBook /> */}
+      <div>
+        <h2 className="naslov2">
+          Списак твојих задужених књига дат је у табели:
+        </h2>
+        <table className="table  table-warning table-striped mt-5 pt-5">
+          <thead>
+            <tr>
+              <th scope="col">Назив</th>
+              <th scope="col">Аутор</th>
+              <th scope="col">Година издања</th>
+              <th scope="col">Број страна</th>
+              <th scope="col">Категорија</th>
+              <th scope="col">Датум за враћање</th>
+            </tr>
+          </thead>
+          <tbody>
+            {loanedBooks.map((books, index) => {
+              return (
+                <tr>
+                  <td>{books.title}</td>
+                  <td>{books.authors}</td>
+                  <td>{books.yearPublished}</td>
+                  <td>{books.numberOfPages}</td>
+                  <td>{books.category.name}</td>
+                  <td>{books.dateLoaned}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </>
   );
 };
