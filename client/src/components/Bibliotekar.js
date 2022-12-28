@@ -14,6 +14,7 @@ const Bibliotekar = () => {
     () => {
       if (books.length == 0) {
         console.log("usao u useEffect");
+        console.log(books);
         bookService.get_books().then(function(result) {
           setBooks(result); // ovde ubaciti slucaj ako nema trenutno knjiga za prikazivanje
         });
@@ -42,97 +43,113 @@ const Bibliotekar = () => {
 
   return (
     <>
-      <div>
-        <Header />
-        <h2 className="naslov2"> Књиге за раздуживање</h2>
+      {userType == "bibliotekar" ? (
         <div>
-          {messageReturn && (
-            <div className="alert alert-sucess">
-              <strong>Успешно!{messageReturn} </strong>
-            </div>
-          )}
-        </div>
-        <div className="cards2">
-          {books.map((book, index) => {
-            return (
-              <div className="cards2" key={index}>
-                <div className="card2">
-                  <div className="col">
-                    <img src={book.picturePath} className="card2-img-top" />
-                    <div className="card2-body">
-                      <h5 className="card2-title"> {book.title} </h5>
-                      <p className="card2-text"> {book.authors}</p>
-                      <p className="card2-text">
-                        {" "}
-                        {book.numberOfPages}
-                        <p style={{ fontSize: "11px" }}>стр.</p>
-                      </p>
+          <Header />
+          <h2 className="naslov2"> Књиге за раздуживање</h2>
+          <div>
+            {messageReturn && (
+              <div className="alert alert-sucess">
+                <strong>Успешно!{messageReturn} </strong>
+              </div>
+            )}
+          </div>
+          <div className="cards2">
+            {books.map((book, index) => {
+              return (
+                <div className="cards2" key={index}>
+                  <div className="card2">
+                    <div className="col">
+                      <img src={book.picturePath} className="card2-img-top" />
+                      <div className="card2-body">
+                        <h5 className="card2-title"> {book.title} </h5>
+                        <p className="card2-text"> {book.authors}</p>
+                        <p className="card2-text">
+                          {" "}
+                          {book.numberOfPages}
+                          <p style={{ fontSize: "11px" }}>стр.</p>
+                        </p>
+                      </div>
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item"> {book.description}</li>
+                        <li className="list-group-item">
+                          {book.yearPublished}
+                        </li>
+                      </ul>
+                      {book.isLoaned ? (
+                        <button
+                          className="btn btn-dark bnt-sm mt-3"
+                          onClick={() => returnBook(book.title)}
+                        >
+                          Раздужи
+                        </button>
+                      ) : (
+                        <p></p>
+                      )}
+                      <hr />
                     </div>
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item"> {book.description}</li>
-                      <li className="list-group-item">{book.yearPublished}</li>
-                    </ul>
-                    {book.isLoaned ? (
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        <p></p>
+      )}
+      {userType == "bibliotekar" ? (
+        <div>
+          <h2 className="naslov2"> Слободне књиге за брисање</h2>
+          <div>
+            {messageDelete && (
+              <div className="alert alert-sucess">
+                <strong>Успешно!{messageDelete} </strong>
+              </div>
+            )}
+          </div>
+          <div className="cards2">
+            {freebooks.map((book, index) => {
+              return (
+                <div className="cards2" key={index}>
+                  <div className="card2">
+                    <div className="col">
+                      <img src={book.picturePath} className="card2-img-top" />
+                      <div className="card2-body">
+                        <h5 className="card2-title"> {book.title} </h5>
+                        <p className="card2-text"> {book.authors}</p>
+                        <p className="card2-text"> {book.category.name}</p>
+                        <p className="card2-text">
+                          {" "}
+                          {book.numberOfPages}
+                          <p style={{ fontSize: "11px" }}>стр.</p>
+                        </p>
+                      </div>
+                      <ul className="list-group list-group-flush">
+                        <li className="list-group-item"> {book.description}</li>
+                        <li className="list-group-item">
+                          {book.yearPublished}
+                        </li>
+                        <li className="list-group-item">
+                          {book.category.name}
+                        </li>
+                      </ul>
                       <button
                         className="btn btn-dark bnt-sm mt-3"
-                        onClick={() => returnBook(book.title)}
+                        onClick={() => deleteBook(book.title)}
                       >
-                        Раздружи
+                        Обриши
                       </button>
-                    ) : (
-                      <p></p>
-                    )}
-                    <hr />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-      <div>
-        <h2 className="naslov2"> Слободне књиге за брисање</h2>
-        <div>
-          {messageDelete && (
-            <div className="alert alert-sucess">
-              <strong>Успешно!{messageDelete} </strong>
-            </div>
-          )}
-        </div>
-        <div className="cards2">
-          {freebooks.map((book, index) => {
-            return (
-              <div className="cards2" key={index}>
-                <div className="card2">
-                  <div className="col">
-                    <img src={book.picturePath} className="card2-img-top" />
-                    <div className="card2-body">
-                      <h5 className="card2-title"> {book.title} </h5>
-                      <p className="card2-text"> {book.authors}</p>
-                      <p className="card2-text">
-                        {" "}
-                        {book.numberOfPages}
-                        <p style={{ fontSize: "11px" }}>стр.</p>
-                      </p>
+                      <hr />
                     </div>
-                    <ul className="list-group list-group-flush">
-                      <li className="list-group-item"> {book.description}</li>
-                      <li className="list-group-item">{book.yearPublished}</li>
-                    </ul>
-                    <button
-                      className="btn btn-dark bnt-sm mt-3"
-                      onClick={() => deleteBook(book.title)}
-                    >
-                      Обриши
-                    </button>
-                    <hr />
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      ) : (
+        <p></p>
+      )}
       {/* <Footer/> */}
     </>
   );
