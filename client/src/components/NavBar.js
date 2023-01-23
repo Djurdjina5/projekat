@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 const NavBar = () => {
   const userType = authService.getCurrentUserType();
+  const isAdmin = authService.getIsAdmin();
   const navigate = useNavigate();
 
   const logout = () => {
@@ -42,7 +43,7 @@ const NavBar = () => {
           ) : (
             <p></p>
           )}
-          {userType === "admin" ? (
+          {isAdmin === true ? (
             <Nav.Link href="/admin"> Админ </Nav.Link>
           ) : (
             <p></p>
@@ -54,13 +55,15 @@ const NavBar = () => {
             <p></p>
           )}
           {userType != "citalac" ? (
-            <Nav.Link href="/register">Регистрација</Nav.Link>
+            <Nav.Link href="/register">Регистрација читаоца</Nav.Link>
           ) : (
             <p></p>
           )}
           <Nav.Link href="/promenaLozinke">Промена лозинке</Nav.Link>
           <Nav.Link href="/brisanjeNaloga">Деактивација налога</Nav.Link>
-          <button onClick={logout}> Излогуј се</button>
+          <button className="btn2" onClick={logout}>
+            Излогуј се
+          </button>
         </Nav>
       </Container>
     </Navbar>
