@@ -26,8 +26,8 @@ module.exports.login = function (req, res) {
               console.log("i am in jwt");
               if (err) return res.json({ message: err });
               User.findOneAndUpdate(
-                { username: req.body.username, token: token },
-                { $set: { isActive: true } },
+                { username: req.body.username },
+                { $set: { isActive: true, token: token } },
                 function (err, data) {}
               );
               user.isActive = true;
