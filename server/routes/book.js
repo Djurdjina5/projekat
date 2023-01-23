@@ -62,9 +62,12 @@ router.get("/getFreeBooks", jwt_verify.jwt_verify, bookController.getFreeBooks);
 router.get("/getBooks", jwt_verify.jwt_verify, bookController.getBooks);
 router.post("/loanBook", jwt_verify.jwt_verify, bookController.loanBook);
 router.post("/returnBook", jwt_verify.jwt_verify, bookController.returnBook);
-router.post("/deleteBook", jwt_verify.jwt_verify, bookController.deleteBook);
+router.delete("/deleteBook/:title", jwt_verify.jwt_verify, bookController.deleteBook);
 router.post("/searchBooks", jwt_verify.jwt_verify, bookController.searchBooks);
-router.post("/getloanedbooks", bookController.getLoanedBooksByUserID);
-
+router.post(
+  "/getloanedbooks",
+  jwt_verify.jwt_verify,
+  bookController.getLoanedBooksByUserID
+);
 
 module.exports = router;
