@@ -74,31 +74,31 @@ const Citalac = () => {
       ) : (
         <p></p>
       )}
-      <div>
-        <h2 className="naslov2">
+      <div className="contentAdd">
+        <h2 className="naslov2 mt-2 mb-1">
           Списак твојих задужених књига дат је у табели:
         </h2>
-        <table className="table  table-warning table-striped mt-5 pt-5">
-          <thead>
+        <table className="table table-warning table-striped mt-3 pt-5">
+          <thead className="thead">
             <tr>
               <th scope="col">Назив</th>
               <th scope="col">Аутор</th>
               <th scope="col">Година издања</th>
               <th scope="col">Број страна</th>
               <th scope="col">Категорија</th>
-              <th scope="col">Датум за враћање</th>
+              <th scope="col">Рок за враћање</th>
             </tr>
           </thead>
           <tbody>
-            {loanedBooks.map((books, index) => {
+            {loanedBooks.map((book, index) => {
               return (
                 <tr>
-                  <td>{books.title}</td>
-                  <td>{books.authors}</td>
-                  <td>{books.yearPublished}</td>
-                  <td>{books.numberOfPages}</td>
-                  <td>{books.category.name}</td>
-                  <td>{books.dateLoaned}</td>
+                  <td>{book.title}</td>
+                  <td>{book.authors}</td>
+                  <td>{book.yearPublished}</td>
+                  <td>{book.numberOfPages}</td>
+                  <td>{book.category.name}</td>
+                  <td>{book.dateReturned}</td>
                 </tr>
               );
             })}
