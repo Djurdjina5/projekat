@@ -34,7 +34,6 @@ const login = (username, password) => {
       localStorage.setItem("user", JSON.stringify(response.data));
       console.log(response.data);
       //   }
-
       return response.data;
     });
 };
@@ -44,7 +43,7 @@ const logout = () => {
   const username = JSON.parse(localStorage.getItem("user")).username;
   console.log(username);
   const headers = {
-    Authorization: user.token
+    Authorization: user.token,
   };
   return axios
     .post(API_URL + "/logout", { username }, { headers })
@@ -67,6 +66,11 @@ const getCurrentUserID = () => {
 const getCurrentUserType = () => {
   if (localStorage.getItem("user"))
     return JSON.parse(localStorage.getItem("user")).type;
+  else return "";
+};
+const getIsAdmin = () => {
+  if (localStorage.getItem("user"))
+    return JSON.parse(localStorage.getItem("user")).isAdmin;
   else return "";
 };
 
@@ -113,6 +117,7 @@ const deleteAcc = () => {
       { headers }
     )
     .then((response) => {
+      localStorage.removeItem("user");
       return response;
     })
     .catch(function(response) {
@@ -129,6 +134,7 @@ const authService = {
   deleteAcc,
   getCurrentUserType,
   getCurrentUserID,
+  getIsAdmin,
 };
 
 export default authService;

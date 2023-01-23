@@ -110,9 +110,12 @@ body {
         background-attachment: fixed;
         background-repeat: no-repeat;
         font-family: sans-serif;
+        overflow:auto;
   }
 button {
-    color:brown
+    color:black;
+    background-color:wheat;
+    border-color:#CA7DF9;
 }
 /* .Homepage{
 background-image: url(./img/backroundmain.jpg);
@@ -135,7 +138,10 @@ background-repeat: no-repeat;
 .navbar{
   background-color: #8C6057;
   display: flex;
-    flex-direction: row;
+  flex-direction: row;
+  padding-top: 0em;
+  padding-bottom: 0em;
+
 }
 .card2{
  border-style: solid;
@@ -212,3 +218,32 @@ justify-content: center;
 .form-control::placeholder{
   color:#3C4048;
 }
+.btn2{
+  /* margin-right: 0cm;
+  margin-left: 20cm; */
+  margin-top: 0.4rem;
+  margin-bottom:0.4rem;
+}
+.contentAdd{
+    margin-left: 12%;
+    margin-right: 12%;
+}
+.table{
+  border-color: #CA7DF9;
+  border-width: 2ch;
+}
+/* .Homepage{
+  
+} */
+.p-dialog-mask{
+  display: grid;
+  flex-direction:column;
+  justify-content: center;
+  background-color: #8C6057;
+  margin-left: 30rem;
+  margin-right: 30rem;
+  margin-top: 0.3rem;
+  height: 140px;
+  /* width: 300; */
+}
+

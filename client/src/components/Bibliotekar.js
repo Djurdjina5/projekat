@@ -29,7 +29,7 @@ const Bibliotekar = () => {
 
   const returnBook = (title) => {
     bookService.return_book(title);
-    setMessageReturn("Књига је раздружена");
+    setMessageReturn("Књига је раздужена");
     window.location.reload();
   };
 
@@ -65,7 +65,6 @@ const Bibliotekar = () => {
                         <h5 className="card2-title"> {book.title} </h5>
                         <p className="card2-text"> {book.authors}</p>
                         <p className="card2-text">
-                          {" "}
                           {book.numberOfPages}
                           <p style={{ fontSize: "11px" }}>стр.</p>
                         </p>
@@ -129,9 +128,9 @@ const Bibliotekar = () => {
                         <li className="list-group-item">
                           {book.yearPublished}
                         </li>
-                        <li className="list-group-item">
-                          {book.category.name}
-                        </li>
+                        {/* <li className="list-group-item">
+                          {book.category.name}{" "}
+                        </li> */}
                       </ul>
                       <button
                         className="btn btn-dark bnt-sm mt-3"

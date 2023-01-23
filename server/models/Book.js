@@ -10,6 +10,7 @@ var BookSchema = new Schema({
   numberOfPages: { type: Number },
   isLoaned: { type: Boolean, default: false },
   dateLoaned: { type: Date, default: null },
-  loanedUser: { type: Schema.Types.ObjectId, ref: "User", default: null },
+  dateReturned: { type: String },
+  loanedUser: { type: Schema.Types.ObjectId, ref: "user", default: null },
 });
 module.exports = mongoose.model("book", BookSchema);
