@@ -140,18 +140,16 @@ const return_book = (title) => {
 };
 
 const delete_book = (title) => {
+  console.log("i am in delete_book front");
   const user = JSON.parse(localStorage.getItem("user"));
+  console.log(user);
   const headers = {
     Authorization: user.token,
   };
   return axios
-    .post(
-      API_URL + "/deleteBook",
-      {
-        title,
-      },
-      { headers }
-    )
+    .delete(API_URL + "/deleteBook/" + title, {
+      headers,
+    })
     .then((response) => {
       return response.data;
     })
@@ -161,7 +159,7 @@ const delete_book = (title) => {
     });
 };
 
-const search_books = (title, authors, category) => {
+const search_books = (title, authors) => {
   const user = JSON.parse(localStorage.getItem("user"));
   const headers = {
     Authorization: user.token,
@@ -172,7 +170,6 @@ const search_books = (title, authors, category) => {
       {
         title,
         authors,
-        category,
       },
       { headers }
     )
